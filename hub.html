@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>hub • MP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="core.css" />
+</head>
+<body>
+
+  <!-- 🔍 Filtres -->
+  <div id="filters" style="text-align: center; margin: 1em 0;">
+    <button data-tag="XR">XR</button>
+    <button data-tag="Dev">Développement</button>
+    <button data-tag="musique">Musique</button>
+    <button data-tag="all">Tout afficher</button>
+  </div>
+
+  <!-- 🧱 Grille -->
+  <div id="grid" class="grid"></div>
+
+  <!-- ⚙️ Script de démarrage furtif -->
+  <script src="mm.min.js" defer></script>
+
+
+  <!-- 📏 Ajustement iframe (Weebly ou autre) -->
+  <script>
+    function sendHeight() {
+      const height = document.body.scrollHeight || document.documentElement.scrollHeight;
+      parent.postMessage({ type: 'setHeight', height }, '*');
+    }
+
+    window.addEventListener('load', () => {
+      sendHeight();
+      setTimeout(sendHeight, 500);
+      setTimeout(sendHeight, 1500);
+      setTimeout(sendHeight, 3000);
+    });
+
+    new ResizeObserver(() => sendHeight()).observe(document.body);
+  </script>
+
+</body>
+</html>

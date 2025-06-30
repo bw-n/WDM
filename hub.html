@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Premium Map</title>
+  <title>hub • MP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="core.css" />
 </head>
 <body>
 
-  <!-- 🔍 Filtres par tag -->
+  <!-- 🔍 Filtres -->
   <div id="filters" style="text-align: center; margin: 1em 0;">
     <button data-tag="XR">XR</button>
     <button data-tag="Dev">Développement</button>
@@ -16,13 +17,14 @@
     <button data-tag="all">Tout afficher</button>
   </div>
 
-  <!-- 🧱 Grille premium -->
+  <!-- 🧱 Grille -->
   <div id="grid" class="grid"></div>
 
-  <!-- 🌐 Script principal -->
-  <script src="map.js"></script>
+  <!-- ⚙️ Script de démarrage furtif -->
+  <script src="mm.min.js" defer></script>
 
-  <!-- 📏 Ajustement dynamique pour iframe -->
+
+  <!-- 📏 Ajustement iframe (Weebly ou autre) -->
   <script>
     function sendHeight() {
       const height = document.body.scrollHeight || document.documentElement.scrollHeight;

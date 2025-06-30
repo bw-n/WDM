@@ -1,0 +1,145 @@
+/* 🌐 Réinitialisation complète */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* 🧱 Grille carrée en plein écran */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 1px;
+  width: 100vmin;
+  height: 100vmin;
+  margin: auto;
+  background: #000;
+}
+
+/* 🎯 Slot individuel */
+.slot {
+  background: #111;
+  border: 1px solid #00ffee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* important pour tooltip */
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* 🖼️ Image dans slot */
+.slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none; /* permet au hover du parent de rester actif */
+}
+
+/* 🧲 Effet au survol */
+.slot:hover {
+  transform: scale(1.07);
+  z-index: 1;
+  box-shadow:
+    0 0 18px #00ffeeaa,
+    0 0 4px #00ffee55 inset;
+}
+
+/* ➕ Slot vide */
+.slot.empty {
+  background: repeating-linear-gradient(
+    45deg,
+    #0d0d0d 0px,
+    #0d0d0d 4px,
+    #181818 4px,
+    #181818 8px
+  );
+  color: #00ffee;
+  text-shadow: 0 0 6px #00ffee99;
+  font-size: 1.8em;
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+  cursor: default;
+}
+
+@keyframes pulse {
+  0%, 100% { background-color: #141414; }
+  50% { background-color: #222; }
+}
+
+/* 🧪 Filtres */
+#filters {
+  text-align: center;
+  margin: 1em 0;
+}
+
+#filters button {
+  background: #222;
+  color: #00ffee;
+  border: 1px solid #00ffee;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#filters button:hover {
+  background: #00ffee;
+  color: #000;
+}
+
+#filters button.active {
+  background: #00ffee;
+  color: #000;
+  box-shadow: 0 0 8px #00ffee99;
+}
+
+/* 🧼 État filtré */
+.slot.tag-active {
+  outline: 3px solid #00ffee;
+  transform: scale(1.05);
+  z-index: 1;
+}
+.slot.tag-muted {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ℹ️ Info-bulle */
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #00ffee;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 0 6px #00ffee55;
+  z-index: 20; /* un cran au-dessus pour éviter l’image */
+}
+
+/* 💬 Affichage au survol de la cellule */
+.slot:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}

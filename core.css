@@ -12,6 +12,7 @@ body {
   background: transparent;
   overflow: hidden;
   font-family: sans-serif;
+  padding-top: 12px;
 }
 
 /* 🧱 Grille carrée en plein écran */
@@ -20,8 +21,8 @@ body {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   gap: 1px;
-  width: 100vmin;
-  height: 100vmin;
+  width: 94vmin;
+  height: 94vmin;
   margin: auto;
   background: #000;
 }
@@ -82,7 +83,7 @@ body {
 /* 🧪 Filtres */
 #filters {
   text-align: center;
-  margin: 1em 0;
+  margin: 1em 0 150px;
 }
 
 #filters button {
@@ -119,7 +120,6 @@ body {
   pointer-events: none;
 }
 
-/* ℹ️ Info-bulle */
 .tooltip {
   position: absolute;
   bottom: 110%;
@@ -127,15 +127,18 @@ body {
   transform: translateX(-50%);
   background: #000;
   color: #00ffee;
-  padding: 5px 8px;
+  padding: 4px 6px;                /* 🔧 légèrement réduit */
   border-radius: 5px;
-  font-size: 0.75em;
-  white-space: nowrap;
+  font-size: 0.68em;               /* 🔧 réduit subtilement */
+  white-space: pre-line;
+  word-break: normal;
+  max-width: 150px;                /* 🔧 réduit juste un peu */
+  text-align: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   box-shadow: 0 0 6px #00ffee55;
-  z-index: 20; /* un cran au-dessus pour éviter l’image */
+  z-index: 20;
 }
 
 /* 💬 Affichage au survol de la cellule */
